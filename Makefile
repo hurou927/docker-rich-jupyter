@@ -1,13 +1,11 @@
-
-# exec
-#  docker exec -i -t ${container-id} /bin/bash
-
+os := $(shell uname -s)
 build:
 	docker compose build
 
 run:
 	mkdir -p workspace
-	docker compose up
+	docker compose up -d
+	./open-url.sh
 
 kill:
 	docker compose kill
